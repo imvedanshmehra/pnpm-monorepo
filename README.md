@@ -31,19 +31,18 @@ graph LR
 
 ## Getting started
 
-Requires **Node 18+** and **pnpm 7**. The committed lockfile is format 5.4. Newer pnpm versions reject it (pnpm 9 fails with `ERR_PNPM_LOCKFILE_BREAKING_CHANGE`).
+Requires **Node 18+**. The pnpm version is pinned through the `packageManager` field, so with [Corepack](https://nodejs.org/api/corepack.html) enabled the right pnpm is picked up automatically:
 
 ```bash
-npx pnpm@7 install
+corepack enable   # once per machine
+pnpm install
 
 # run the app (http://localhost:5173)
-npx pnpm@7 --filter @pnpm-monorepo/main dev
+pnpm --filter @pnpm-monorepo/main dev
 
 # type-check and production build
-npx pnpm@7 --filter @pnpm-monorepo/main build
+pnpm --filter @pnpm-monorepo/main build
 ```
-
-If pnpm 7 is already installed globally, drop the `npx pnpm@7` prefix and use `pnpm`.
 
 ## Adding a package
 
@@ -60,3 +59,7 @@ This repo is intentionally small. What a production setup would add:
 - **TypeScript project references** across packages, for incremental type-checking.
 - **Shared lint/format config** and a CI workflow.
 - **Versioning with Changesets**, if any package is ever published.
+
+## License
+
+[MIT](./LICENSE)
